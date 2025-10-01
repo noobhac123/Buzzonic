@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://fpyf8.com/88/tag.min.js" data-zone="174678" async data-cfasync="false"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobFinder - Find Jobs, Careers & Employment Opportunities</title>
+    <meta name="description" content="Search and apply for the latest jobs and career opportunities with JobFinder. Explore thousands of high-paying job listings in technology, finance, healthcare, and more across the US, UK, and Canada. Start your job search today!">
+    <meta name="keywords" content="find jobs, jobs, career, employment, job search, job listings, tech jobs, remote work, high paying jobs, job vacancies, job site, hiring, opportunities, resume, work in USA">
+    
+    <!-- Social Share Meta Tags (Open Graph & Twitter Cards) -->
+    <meta property="og:title" content="JobFinder - Find Your Dream Job Today">
+    <meta property="og:description" content="Search and apply for thousands of jobs in technology, finance, healthcare, and more. Your next career opportunity is just a click away.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://buzzonic-silk.vercel.app/">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://buzzonic-silk.vercel.app/">
+    <meta name="twitter:title" content="JobFinder - Find Your Dream Job Today">
+    <meta name="twitter:description" content="Search and apply for thousands of jobs in technology, finance, healthcare, and more. Your next career opportunity is just a click away.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80">
+
+    <style>
+        /* --- Basic Reset & Typography --- */
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        html, body {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f4f7f6;
+            color: var(--dark-color);
+            overflow-x: hidden; /* Prevents ALL horizontal scrolling */
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        .container { max-width: 1200px; margin: auto; padding: 0 20px; }
+        h1, h2, h3 { margin-top: 0; font-weight: 600; }
+        a { text-decoration: none; color: var(--primary-color); }
+        img { max-width: 100%; }
+
+        /* --- Scroll Animation --- */
+        .animated-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animated-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Header & Navigation --- */
+        .navbar { background: #ffffff; color: var(--dark-color); padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: top 0.3s; }
+        .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+        .navbar .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); }
+        .navbar .nav-links { list-style: none; display: flex; align-items: center; margin: 0; padding: 0; }
+        .navbar .nav-links li { margin-left: 20px; }
+        .navbar .nav-links li#user-info { font-size: 0.9rem; color: var(--secondary-color); font-weight: 500;}
+        .navbar .nav-links a { color: var(--dark-color); padding: 5px 10px; transition: color 0.3s ease; cursor: pointer; }
+        .navbar .nav-links a:hover { color: var(--primary-color); }
+        .hamburger { display: none; cursor: pointer; }
+        .hamburger .bar { display: block; width: 25px; height: 3px; margin: 5px auto; transition: all 0.3s ease-in-out; background-color: var(--dark-color); }
+
+        /* --- Hero Section --- */
+        .hero { background: linear-gradient(rgba(0, 123, 255, 0.7), rgba(0, 123, 255, 0.7)), url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1769&q=80') no-repeat center center/cover; color: #fff; padding: 150px 0 100px; text-align: center; margin-top: 60px; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; margin-bottom: 40px; }
+        .search-form-container { max-width: 800px; margin: auto; background: #fff; border-radius: 8px; padding: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .search-form { display: flex; justify-content: center; width: 100%; }
+        .search-form .form-control { border: none; padding: 15px; font-size: 1rem; outline: none; background: transparent; color: #333; }
+        .search-form .keyword-input { flex-grow: 1; }
+        .search-form .btn-search { background: var(--primary-color); color: #fff; border: none; padding: 0 30px; border-radius: 5px; cursor: pointer; font-size: 1rem; transition: background 0.3s ease; flex-shrink: 0; }
+        .search-form .btn-search:hover { background: #0056b3; }
+        .filter-container { margin-top: 15px; display: flex; justify-content: center; gap: 15px; }
+        .filter-container select { padding: 8px 12px; border: 1px solid #ddd; border-radius: 5px; font-family: var(--font-family); color: var(--secondary-color); background-color: #fff; }
+
+        /* --- Categories Section --- */
+        .categories { padding: 60px 0; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .section-title p { font-size: 1.1rem; color: var(--secondary-color); }
+        .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
+        .category-card { background: #fff; padding: 25px; text-align: center; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
+        .category-card:hover { transform: translateY(-10px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+        .category-card .icon { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px; }
+        .category-card h3 { font-size: 1.2rem; margin-bottom: 5px; }
+        .category-card p { color: var(--secondary-color); font-size: 0.9rem; }
+
+        /* --- Featured Jobs Section --- */
+        .featured-jobs { padding: 60px 0; background: var(--light-color); }
+        .job-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .job-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 25px; display: flex; flex-direction: column; transition: box-shadow 0.3s ease; }
+        .job-card:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .job-card-header { display: flex; align-items: center; margin-bottom: 20px; }
+        .job-card-header img { width: 50px; height: 50px; border-radius: 5px; margin-right: 15px; }
+        .job-card h3 { margin: 0; font-size: 1.2rem; }
+        .job-card .company-name { color: var(--secondary-color); font-size: 0.9rem; }
+        .job-details { margin-bottom: 15px; }
+        .job-details span { display: inline-block; background: #e9ecef; color: var(--secondary-color); padding: 5px 12px; border-radius: 15px; margin: 0 5px 10px 0; font-size: 0.8rem; }
+        .job-card p { flex-grow: 1; color: #555; line-height: 1.5; }
+        .job-card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+        .job-card .salary { font-weight: 600; color: var(--success-color); }
+        .job-card .btn-apply { background: var(--primary-color); color: #fff; padding: 10px 20px; border-radius: 5px; transition: background 0.3s ease; cursor: pointer; }
+        .job-card .btn-apply:hover { background: #0056b3; }
+        #no-jobs-message { text-align: center; font-size: 1.2rem; color: var(--secondary-color); display: none; }
+
+        /* --- How It Works Section --- */
+        .how-it-works-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: center; margin-top: 50px; }
+        .how-it-works-card .icon { font-size: 3rem; color: var(--primary-color); margin-bottom: 20px; }
+        .how-it-works-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+        .how-it-works-card p { color: var(--secondary-color); }
+
+        /* --- Companies Section --- */
+        .company-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; margin-top: 30px; }
+        .company-logos img { height: 40px; filter: grayscale(100%); opacity: 0.6; transition: all 0.3s ease; }
+        .company-logos img:hover { filter: grayscale(0%); opacity: 1; }
+
+        /* --- About Us Section --- */
+        .about-us-content { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-top: 40px; }
+        .about-us-image img { border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .about-us-text h3 { font-size: 1.8rem; margin-bottom: 20px; }
+        .about-us-text p { margin-bottom: 15px; }
+        .about-us-text ul { list-style: none; padding: 0; margin-top: 20px; }
+        .about-us-text ul li { margin-bottom: 10px; display: flex; align-items: center; }
+        .about-us-text ul li i { color: var(--success-color); margin-right: 10px; font-size: 1.2rem; }
+
+        /* --- Testimonials Section --- */
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .testimonial-card { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); display: flex; flex-direction: column; }
+        .testimonial-card .stars { color: #f9bf29; font-size: 1.2rem; margin-bottom: 15px; }
+        .testimonial-card p { font-style: italic; color: #555; flex-grow: 1; margin-bottom: 20px; }
+        .testimonial-author { display: flex; align-items: center; margin-top: auto; }
+        .testimonial-author img { width: 50px; height: 50px; border-radius: 50%; margin-right: 15px; }
+        .testimonial-author h4 { margin: 0; font-size: 1rem; }
+        .testimonial-author span { color: var(--secondary-color); font-size: 0.9rem; }
+        
+        /* --- Blog Section --- */
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .blog-card { background: #fff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .blog-card:hover { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+        .blog-card img { width: 100%; height: 200px; object-fit: cover; }
+        .blog-content { padding: 25px; }
+        .blog-content .category-tag { background: #e9ecef; color: var(--primary-color); padding: 5px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 500; }
+        .blog-content h3 { font-size: 1.3rem; margin: 15px 0; }
+        .blog-content .read-more-btn { font-weight: 600; cursor: pointer; }
+
+        /* --- FAQ Section --- */
+        #faq { padding: 60px 0; background: var(--light-color); }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: #fff; margin-bottom: 10px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .faq-question { padding: 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
+        .faq-question::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; transition: transform 0.3s; }
+        .faq-item.active .faq-question::after { transform: rotate(180deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; padding: 0 20px; color: #555; }
+        .faq-item.active .faq-answer { max-height: 200px; padding: 0 20px 20px; }
+
+        /* --- Newsletter Section --- */
+        .newsletter-section { padding: 60px 0; }
+        .newsletter-box { background: var(--dark-color); color: #fff; padding: 50px; text-align: center; border-radius: 8px; }
+        .newsletter-box h2 { margin-bottom: 15px; }
+        .newsletter-box p { color: #ccc; margin-bottom: 30px; }
+        .newsletter-form { display: flex; justify-content: center; max-width: 500px; margin: auto; }
+        .newsletter-form input { flex-grow: 1; border: none; padding: 15px; border-radius: 5px 0 0 5px; outline: none; font-size: 1rem; }
+        .newsletter-form button { background: var(--primary-color); color: #fff; border: none; padding: 0 30px; border-radius: 0 5px 5px 0; cursor: pointer; font-size: 1rem; transition: background 0.3s; }
+        .newsletter-form button:hover { background: #0056b3; }
+
+
+        /* --- Simple Placeholder Sections --- */
+        .placeholder-section { padding: 60px 0; }
+        .placeholder-section.bg-light { background: var(--light-color); }
+
+        /* --- CTA Section --- */
+        .cta-section { background: var(--primary-color); background: linear-gradient(45deg, #007bff, #0056b3); color: #fff; padding: 60px 0; text-align: center; }
+        .cta-section h2 { font-size: 2.2rem; margin-bottom: 20px; }
+        .cta-section p { margin-bottom: 30px; }
+        .btn-cta { background: #fff; color: var(--primary-color); padding: 15px 30px; border-radius: 5px; font-size: 1.1rem; margin: 0 10px; transition: all 0.3s ease; display: inline-block; cursor: pointer; border: 2px solid transparent; }
+        .btn-cta:hover { background: transparent; color: #fff; border-color: #fff; }
+        .btn-cta.secondary { background: transparent; border: 2px solid #fff; color: #fff; }
+        .btn-cta.secondary:hover { background: #fff; color: var(--primary-color); }
+
+        /* --- Footer --- */
+        .footer { background: #222; color: #ccc; padding: 60px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .footer-col h4 { color: #fff; margin-bottom: 20px; font-size: 1.1rem; }
+        .footer-col p, .footer-col ul, .footer-col li { list-style: none; padding: 0; margin: 0; color: #aaa; }
+        .footer-col ul li a { color: #aaa; display: block; padding: 5px 0; transition: color 0.3s ease; cursor: pointer; }
+        .footer-col ul li a:hover { color: var(--primary-color); }
+        .footer-col .social-links a { display: inline-block; height: 40px; width: 40px; background: rgba(255,255,255,0.2); margin: 0 10px 10px 0; text-align: center; line-height: 40px; border-radius: 50%; color: #ffffff; transition: background-color 0.3s ease; }
+        .footer-col .social-links a:hover { background: var(--primary-color); }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid #444; font-size: 0.9rem; color: #aaa; }
+        .footer-bottom a { color: var(--primary-color); }
+
+        /* --- Back to Top Button --- */
+        #back-to-top-btn { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background: var(--primary-color); color: #fff; border: none; border-radius: 50%; text-align: center; line-height: 50px; font-size: 24px; cursor: pointer; display: none; z-index: 100; opacity: 0; transition: opacity 0.3s, transform 0.3s; transform: translateY(10px); }
+        #back-to-top-btn.show { display: block; opacity: 1; transform: translateY(0); }
+        #back-to-top-btn:hover { background: #0056b3; }
+
+
+        /* --- MODAL STYLES --- */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
+        .modal-overlay.show { opacity: 1; }
+        .modal-container { background: #fff; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); width: 90%; max-width: 420px; position: relative; transform: scale(0.9); transition: transform 0.3s ease; display: flex; flex-direction: column; }
+        .modal-overlay.show .modal-container { transform: scale(1); }
+        .modal-header { padding: 20px 30px; border-bottom: 1px solid #eee; }
+        .modal-header h2 { margin: 0; font-size: 1.5rem; }
+        .modal-body { padding: 30px; overflow-y: auto; max-height: 70vh; }
+        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 32px; cursor: pointer; color: #aaa; line-height: 1; z-index: 10; }
+        
+        /* Auth Modal Specifics */
+        .auth-view { display: none; }
+        .auth-view.active { display: block; }
+        .form-group { position: relative; margin-bottom: 20px; }
+        .form-group i.fa:not(.password-toggle) { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #aaa; }
+        .form-group input { width: 100%; padding: 12px 12px 12px 45px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; }
+        .form-group input:focus { border-color: var(--primary-color); outline: none; box-shadow: 0 0 0 2px rgba(0,123,255,0.2); }
+        .password-toggle { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #aaa; cursor: pointer; }
+        .form-group .error-message { color: var(--danger-color); font-size: 0.8rem; margin-top: 5px; display: none; }
+        .form-options { display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; margin-top: -10px; margin-bottom: 20px; }
+        .form-link { color: var(--primary-color); cursor: pointer; }
+        .form-link:hover { text-decoration: underline; }
+        .submit-btn { background: var(--primary-color); color: #fff; border: none; padding: 12px; border-radius: 5px; font-size: 1rem; cursor: pointer; transition: background 0.3s; width: 100%; position: relative; }
+        .submit-btn:hover { background: #0056b3; }
+        .submit-btn .btn-text { transition: opacity: 0.2s; }
+        .submit-btn .loader { width: 20px; height: 20px; border: 2px solid #fff; border-top-color: transparent; border-radius: 50%; position: absolute; top: 50%; left: 50%; margin-left: -10px; margin-top: -10px; display: none; animation: spin 1s linear infinite; }
+        .submit-btn.loading .loader { display: block; }
+        .submit-btn.loading .btn-text { opacity: 0; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        #auth-message-global { margin-top: 15px; text-align: center; font-weight: bold; }
+        #auth-message-global.success { color: var(--success-color); }
+        
+        /* Job/Blog/Generic Modal Specifics */
+        .content-modal .modal-container { max-width: 700px; }
+        .content-modal .modal-header img { width: 50px; height: 50px; border-radius: 5px; margin-right: 15px; }
+        .content-modal .modal-header { display: flex; align-items: center; }
+        .content-modal .modal-header h3 { font-size: 1.3rem; margin: 0; }
+        .content-modal .company-name { color: var(--secondary-color); font-size: 0.9rem; }
+        .content-modal .modal-body h4 { margin-top: 0; margin-bottom: 10px; font-size: 1.1rem; }
+        .content-modal .modal-body p, .content-modal .modal-body ul { margin-bottom: 20px; color: #555; }
+        .content-modal .modal-body ul { padding-left: 20px; }
+        .content-modal .modal-footer { padding: 20px 30px; border-top: 1px solid #eee; text-align: right; }
+        .content-modal .btn-external-apply { background: var(--primary-color); color: #fff; padding: 12px 25px; border-radius: 5px; transition: background 0.3s ease; }
+        .content-modal .btn-external-apply:hover { background: #0056b3; }
+        .blog-modal-content .modal-container { padding: 0; }
+        .blog-modal-image { width: 100%; height: 250px; object-fit: cover; border-radius: 8px 8px 0 0; }
+        .blog-modal-content .modal-header { padding: 25px; border-bottom: none; }
+        .blog-modal-content .modal-body { padding: 0 25px 25px; }
+
+        /* Responsive Design */
+        @media (max-width: 992px) { .hero h1 { font-size: 2.8rem; } }
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .hamburger.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            .navbar .nav-links { position: absolute; left: -100%; top: 65px; flex-direction: column; background-color: #fff; width: 100%; text-align: center; transition: 0.3s; box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05); }
+            .navbar .nav-links.active { left: 0; }
+            .navbar .nav-links li { margin: 15px 0; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero { padding: 120px 0 80px; }
+            .search-form-container { padding: 10px; }
+            .search-form { flex-direction: column; }
+            .search-form .form-control { border-bottom: 1px solid #ddd; margin-bottom: 10px; width: 100%; text-align: center; }
+            .search-form .btn-search { width: 100%; padding: 15px; border-radius: 5px; }
+            .filter-container { flex-direction: column; gap: 10px; }
+            .filter-container select { width: 100%; }
+            .cta-section .cta-buttons { display: flex; flex-direction: column; align-items: center; }
+            .cta-section .btn-cta { margin: 8px 0; width: 100%; max-width: 320px; }
+            .about-us-content { grid-template-columns: 1fr; text-align: center; }
+            .about-us-image { order: -1; margin-bottom: 30px; }
+            .about-us-text ul li { justify-content: center; }
+            .newsletter-form { flex-direction: column; }
+            .newsletter-form input { border-radius: 5px; margin-bottom: 10px; }
+            .newsletter-form button { border-radius: 5px; padding: 15px; }
+            
+            /* Responsive Modals */
+            .modal-body { padding: 20px; max-height: 75vh; }
+            .modal-header { padding: 15px 20px; }
+            .content-modal .modal-container { width: 95%; }
+            .content-modal .modal-header h3 { font-size: 1.1rem; }
+            .content-modal .modal-header img { width: 40px; height: 40px; }
+            .content-modal .modal-footer { padding: 15px 20px; }
+            .content-modal .btn-external-apply { padding: 12px 20px; width: 100%; text-align: center; }
+            .blog-modal-content .modal-header h2 { font-size: 1.3rem; }
+        }
+    </style>
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="#" class="logo">JobFinder</a>
+                <ul class="nav-links">
+                    <li><a href="#featured-jobs">Jobs</a></li>
+                    <li><a href="#companies">Companies</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#about-us">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li id="login-link"><a id="open-login-modal">Login</a></li>
+                    <li id="register-link"><a id="open-register-modal">Register</a></li>
+                    <li id="user-info" style="display: none;"></li>
+                    <li id="logout-link" style="display: none;"><a>Logout</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Find Your Dream Job Today</h1>
+                <p>Explore thousands of job opportunities and find the perfect one for you.</p>
+                <div class="search-form-container" id="search-form">
+                    <form class="search-form">
+                        <input type="text" class="form-control keyword-input" id="keyword-input" placeholder="Job title, company, or keyword">
+                        <button type="submit" class="btn-search">Find Job</button>
+                    </form>
+                     <div class="filter-container">
+                        <select id="job-type-filter" class="form-control">
+                            <option value="">All Job Types</option>
+                            <option value="Full-Time">Full-Time</option>
+                            <option value="Part-Time">Part-Time</option>
+                            <option value="Contract">Contract</option>
+                        </select>
+                        <select id="location-filter" class="form-control">
+                            <option value="">All Locations</option>
+                            <option value="Remote">Remote</option>
+                            <option value="On-site">On-site</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Categories Section -->
+        <section id="categories" class="categories animated-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Popular Categories</h2>
+                    <p>Browse job openings in the most popular fields.</p>
+                </div>
+                <div class="category-grid">
+                    <div class="category-card" data-category="Technology"><div class="icon"><i class="fas fa-code"></i></div><h3>Technology</h3><p>(1200+ Jobs)</p></div>
+                    <div class="category-card" data-category="Marketing"><div class="icon"><i class="fas fa-chart-line"></i></div><h3>Marketing & Sales</h3><p>(850+ Jobs)</p></div>
+                    <div class="category-card" data-category="Design"><div class="icon"><i class="fas fa-palette"></i></div><h3>Design & Creative</h3><p>(500+ Jobs)</p></div>
+                    <div class="category-card" data-category="Customer Service"><div class="icon"><i class="fas fa-headset"></i></div><h3>Customer Service</h3><p>(900+ Jobs)</p></div>
+                    <div class="category-card" data-category="Finance"><div class="icon"><i class="fas fa-balance-scale"></i></div><h3>Finance & Accounting</h3><p>(450+ Jobs)</p></div>
+                    <div class="category-card" data-category="Healthcare"><div class="icon"><i class="fas fa-heartbeat"></i></div><h3>Healthcare</h3><p>(600+ Jobs)</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Jobs Section -->
+        <section id="featured-jobs" class="featured-jobs animated-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Featured Jobs</h2>
+                    <p>Check out some of the most recent and exciting job listings.</p>
+                </div>
+                <div class="job-grid" id="job-grid">
+                    <div class="job-card" data-category="Technology" data-job-type="Full-Time" data-location="On-site" data-description="<h4>Job Description</h4><p>We are seeking a highly skilled Senior Software Engineer to join our dynamic team. The ideal candidate will be responsible for designing, developing, and maintaining high-quality software solutions for our iOS platform. You will work closely with cross-functional teams to define, design, and ship new features.</p><h4>Responsibilities</h4><ul><li>Design and build advanced applications for the iOS platform.</li><li>Collaborate with cross-functional teams to define, design, and ship new features.</li><li>Unit-test code for robustness, including edge cases, usability, and general reliability.</li><li>Work on bug fixing and improving application performance.</li></ul><h4>Qualifications</h4><ul><li>BS/MS degree in Computer Science, Engineering or a related subject.</li><li>5+ years of software development experience.</li><li>Proven working experience in iOS development.</li><li>Experience with Swift, Objective-C, and Cocoa Touch.</li></ul>">
+                        <div class="job-card-header"><img src="https://logo.clearbit.com/apple.com" alt="Company Logo"><div><h3>Senior Software Engineer</h3><span class="company-name">Apple Inc.</span></div></div><div class="job-details"><span><i class="fas fa-map-marker-alt"></i> Cupertino, CA</span><span><i class="fas fa-briefcase"></i> Full-Time</span></div><p>We are looking for a skilled Software Engineer to design, develop, and maintain high-quality software solutions for iOS...</p><div class="job-card-footer"><span class="salary">$150k - $220k / Year</span><a class="btn-apply">Apply Now</a></div>
+                    </div>
+                    <div class="job-card" data-category="Marketing" data-job-type="Full-Time" data-location="On-site" data-description="<h4>Job Description</h4><p>Join our dynamic marketing team to drive product strategy, launches, and market growth for our new cloud services. You will be the expert in buyers, how they buy and their buying criteria and will transfer that knowledge to the sales channel.</p><h4>Responsibilities</h4><ul><li>Develop product positioning and messaging that differentiates our products in the market.</li><li>Sales enablement – communicate the value proposition of the products to the sales team and develop the sales tools that support the selling process of your products.</li><li>Market intelligence – be the expert on your buyers, how they buy and their buying criteria; be the expert on your competition and how to crush them.</li></ul>">
+                        <div class="job-card-header"><img src="https://logo.clearbit.com/salesforce.com" alt="Company Logo"><div><h3>Product Marketing Manager</h3><span class="company-name">Salesforce</span></div></div><div class="job-details"><span><i class="fas fa-map-marker-alt"></i> San Francisco, CA</span><span><i class="fas fa-briefcase"></i> Full-Time</span></div><p>Join our dynamic marketing team to drive product strategy, launches, and market growth for our new cloud services...</p><div class="job-card-footer"><span class="salary">$110k - $160k / Year</span><a class="btn-apply">Apply Now</a></div>
+                    </div>
+                    <div class="job-card" data-category="Design" data-job-type="Contract" data-location="Remote" data-description="<h4>Job Description</h4><p>We are looking for a talented UX/UI Designer to create amazing user experiences. The ideal candidate should have an eye for clean and artful design, possess superior UI skills and be able to translate high-level requirements into interaction flows and artifacts, and transform them into beautiful, intuitive, and functional user interfaces.</p><h4>Responsibilities</h4><ul><li>Collaborate with product management and engineering to define and implement innovative solutions for the product direction, visuals and experience.</li><li>Execute all visual design stages from concept to final hand-off to engineering.</li><li>Create wireframes, storyboards, user flows, process flows and site maps to effectively communicate interaction and design ideas.</li></ul>">
+                        <div class="job-card-header"><img src="https://logo.clearbit.com/netflix.com" alt="Company Logo"><div><h3>UX/UI Designer</h3><span class="company-name">Netflix</span></div></div><div class="job-details"><span><i class="fas fa-map-marker-alt"></i> Remote</span><span><i class="fas fa-briefcase"></i> Contract</span></div><p>Create intuitive and engaging user experiences for our streaming platform. A strong portfolio is required...</p><div class="job-card-footer"><span class="salary">$95k - $140k / Year</span><a class="btn-apply">Apply Now</a></div>
+                    </div>
+                    <div class="job-card" data-category="Technology" data-job-type="Full-Time" data-location="On-site" data-description="<h4>Job Description</h4><p>We're looking for a Data Scientist to join our team. The hire will be responsible for working with large datasets to extract meaningful insights and build predictive models for autonomous driving. You'll be working with a team of engineers and scientists to develop and deploy machine learning models at scale.</p><h4>Responsibilities</h4><ul><li>Work with large, complex data sets. Solve difficult, non-routine analysis problems, applying advanced analytical methods as needed.</li><li>Build and prototype analysis pipelines iteratively to provide insights at scale.</li><li>Develop a comprehensive understanding of data structures and metrics.</li></ul>">
+                        <div class="job-card-header"><img src="https://logo.clearbit.com/tesla.com" alt="Company Logo"><div><h3>Data Scientist</h3><span class="company-name">Tesla</span></div></div><div class="job-details"><span><i class="fas fa-map-marker-alt"></i> Austin, TX</span><span><i class="fas fa-briefcase"></i> Full-Time</span></div><p>Work with large datasets to extract meaningful insights and build predictive models for autonomous driving...</p><div class="job-card-footer"><span class="salary">$125k - $175k / Year</span><a class="btn-apply">Apply Now</a></div>
+                    </div>
+                    <div class="job-card" data-category="Finance" data-job-type="Full-Time" data-location="On-site" data-description="<h4>Job Description</h4><p>We are seeking a Financial Analyst to be responsible for financial modeling, forecasting, and analysis to support strategic initiatives. This role is a key member of the finance team and will work closely with business leaders to provide data-driven insights.</p><h4>Responsibilities</h4><ul><li>Analyze complex financial information and reports to provide accurate and timely financial recommendations to management for decision making purposes.</li><li>Develop financial models and analyses to support strategic initiatives.</li><li>Analyze past results, perform variance analysis, identify trends, and make recommendations for improvements.</li></ul>">
+                        <div class="job-card-header"><img src="https://logo.clearbit.com/goldmansachs.com" alt="Company Logo"><div><h3>Financial Analyst</h3><span class="company-name">Goldman Sachs</span></div></div><div class="job-details"><span><i class="fas fa-map-marker-alt"></i> New York, NY</span><span><i class="fas fa-briefcase"></i> Full-Time</span></div><p>Responsible for financial modeling, forecasting, and analysis to support strategic initiatives...</p><div class="job-card-footer"><span class="salary">$90k - $130k / Year</span><a class="btn-apply">Apply Now</a></div>
+                    </div>
+                    <div class="job-card" data-category="Customer Service" data-job-type="Part-Time" data-location="Remote" data-description="<h4>Job Description</h4><p>As a Customer Support Advocate, you will be the first point of contact for our merchants. You will provide excellent customer service via chat and email to help them succeed on our platform. You are empathetic, a great communicator, and love solving problems.</p><h4>Responsibilities</h4><ul><li>Respond to customer queries in a timely and accurate way, via email or chat.</li><li>Identify customer needs and help customers use specific features.</li><li>Analyze and report product malfunctions (for example, by testing different scenarios or impersonating users).</li><li>Update our internal databases with information about technical issues and useful discussions with customers.</li></ul>">
+                        <div class="job-card-header"><img src="https://logo.clearbit.com/shopify.com" alt="Company Logo"><div><h3>Customer Support Advocate</h3><span class="company-name">Shopify</span></div></div><div class="job-details"><span><i class="fas fa-map-marker-alt"></i> Remote (Canada)</span><span><i class="fas fa-briefcase"></i> Part-Time</span></div><p>Provide excellent customer service via chat and email to help merchants succeed on our platform...</p><div class="job-card-footer"><span class="salary">$25 - $35 / Hour</span><a class="btn-apply">Apply Now</a></div>
+                    </div>
+                </div>
+                 <p id="no-jobs-message">No jobs found matching your criteria.</p>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="placeholder-section animated-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>How It Works</h2>
+                    <p>Finding your next job is easy. Just follow these simple steps.</p>
+                </div>
+                <div class="how-it-works-grid">
+                    <div class="how-it-works-card">
+                        <div class="icon"><i class="fas fa-user-plus"></i></div>
+                        <h3>1. Create an Account</h3>
+                        <p>Sign up for free and create your profile to get noticed by top employers.</p>
+                    </div>
+                    <div class="how-it-works-card">
+                        <div class="icon"><i class="fas fa-search"></i></div>
+                        <h3>2. Search & Apply</h3>
+                        <p>Search through thousands of job listings and apply with a single click.</p>
+                    </div>
+                    <div class="how-it-works-card">
+                        <div class="icon"><i class="fas fa-handshake"></i></div>
+                        <h3>3. Get Hired</h3>
+                        <p>Receive offers from great companies and start your dream career.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="placeholder-section bg-light animated-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>What Our Users Say</h2>
+                    <p>Discover how JobFinder has helped professionals land their dream jobs.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"JobFinder made my job search incredibly easy. I found my dream role as a Senior Developer at a top tech company in just two weeks. Highly recommended!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User photo">
+                            <div>
+                                <h4>John Doe</h4>
+                                <span>Software Engineer, Google</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"The platform is so intuitive and the quality of job listings is excellent. I was able to connect with amazing employers and find a remote marketing position that was a perfect fit."</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User photo">
+                            <div>
+                                <h4>Jane Smith</h4>
+                                <span>Marketing Manager, Shopify</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p>"As a recent graduate, I was struggling to find my first job. JobFinder's resources and easy application process helped me land an incredible internship that kickstarted my career."</p>
+                         <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="User photo">
+                            <div>
+                                <h4>Samuel Green</h4>
+                                <span>UX/UI Design Intern, Netflix</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Blog Section -->
+        <section id="blog" class="placeholder-section animated-section">
+            <div class="container">
+                 <div class="section-title">
+                    <h2>Career Advice & Resources</h2>
+                    <p>Explore our latest articles to guide you on your career path.</p>
+                </div>
+                <div class="blog-grid">
+                    <div class="blog-card" data-title="5 Common Resume Mistakes to Avoid in 2024" data-image="https://images.unsplash.com/photo-1554224155-1696413565d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" data-content="<p>Creating the perfect resume can be challenging. In today's competitive job market, even small mistakes can lead to your application being overlooked. Here are five common mistakes to avoid:</p><p><strong>1. Typos and Grammatical Errors:</strong> This is the most common and most damaging mistake. Always proofread your resume multiple times. Use a grammar checker and ask a friend to review it.</p><p><strong>2. Not Tailoring Your Resume:</strong> Sending a generic resume to every job application is a huge mistake. Customize your resume for each job by highlighting the skills and experiences that are most relevant to the job description.</p><p><strong>3. Vague or Passive Language:</strong> Use strong action verbs and quantify your accomplishments. Instead of saying 'Responsible for managing social media,' say 'Grew social media engagement by 40% over six months by implementing a new content strategy.'</p><p><strong>4. Poor Formatting:</strong> Your resume should be clean, professional, and easy to read. Use a standard font, consistent formatting, and plenty of white space. A cluttered resume is difficult for a recruiter to scan quickly.</p><p><strong>5. Including Irrelevant Information:</strong> Keep your resume focused and concise. Remove any outdated or irrelevant work experience, hobbies, or personal information. A one-page resume is ideal for most professionals.</p><p>By avoiding these common pitfalls, you can create a powerful resume that stands out to recruiters and helps you land your dream job.</p>">
+                        <img src="https://images.unsplash.com/photo-1554224155-1696413565d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Resume writing">
+                        <div class="blog-content">
+                            <span class="category-tag">Resume</span>
+                            <h3>5 Common Resume Mistakes to Avoid in 2024</h3>
+                            <a class="read-more-btn">Read More &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="blog-card" data-title="How to Ace Your Next Virtual Job Interview" data-image="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" data-content="<p>Virtual interviews are now a standard part of the hiring process. Here’s how you can prepare to make a great impression:</p><p><strong>1. Test Your Technology:</strong> Ensure your internet connection, camera, and microphone are working correctly well before the interview. Download any required software in advance.</p><p><strong>2. Set Up a Professional Background:</strong> Choose a clean, quiet, and well-lit space. A neutral background is best. Make sure there are no distractions.</p><p><strong>3. Dress Professionally:</strong> Dress as you would for an in-person interview. It shows you're taking the opportunity seriously.</p><p><strong>4. Practice, Practice, Practice:</strong> Prepare for common interview questions and practice your answers. Consider doing a mock interview with a friend over video call to get comfortable.</p><p><strong>5. Engage with the Interviewer:</strong> Maintain eye contact by looking at your camera, not just the screen. Use non-verbal cues like nodding and smiling to show you're engaged. Prepare a few questions to ask the interviewer about the role and company culture.</p>">
+                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Job interview">
+                        <div class="blog-content">
+                             <span class="category-tag">Interview</span>
+                            <h3>How to Ace Your Next Virtual Job Interview</h3>
+                           <a class="read-more-btn">Read More &rarr;</a>
+                        </div>
+                    </div>
+                     <div class="blog-card" data-title="Networking for Introverts: A Practical Guide" data-image="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" data-content="<p>Networking can be daunting, especially for introverts. However, it's a crucial part of career growth. Here are some tips to make it more manageable:</p><p><strong>1. Focus on Quality, Not Quantity:</strong> You don't need to talk to everyone in the room. Aim for a few meaningful conversations. It's better to build a strong connection with one person than to have superficial chats with twenty.</p><p><strong>2. Prepare Conversation Starters:</strong> Having a few open-ended questions ready can ease the pressure. Ask about their role, projects they're excited about, or their experience in the industry.</p><p><strong>3. Listen More Than You Talk:</strong> Introverts are often great listeners. Use this to your advantage. People appreciate being heard, and it gives you time to think of a thoughtful response.</p><p><strong>4. Use Online Platforms:</strong> Networking isn't just about in-person events. Platforms like LinkedIn are perfect for making connections from the comfort of your home. Personalize your connection requests to make them more effective.</p><p><strong>5. Follow Up:</strong> After making a connection, send a brief follow-up email or LinkedIn message. This reinforces the connection and keeps the conversation going.</p>">
+                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Networking">
+                        <div class="blog-content">
+                             <span class="category-tag">Career Growth</span>
+                            <h3>Networking for Introverts: A Practical Guide</h3>
+                            <a class="read-more-btn">Read More &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Companies Section -->
+        <section id="companies" class="placeholder-section animated-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Partner Companies</h2>
+                    <p>We are proud to work with the world's leading brands and companies.</p>
+                </div>
+                <div class="company-logos">
+                    <img src="https://logo.clearbit.com/google.com" alt="Google Logo">
+                    <img src="https://logo.clearbit.com/meta.com" alt="Meta Logo">
+                    <img src="https://logo.clearbit.com/amazon.com" alt="Amazon Logo">
+                    <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft Logo">
+                    <img src="https://logo.clearbit.com/slack.com" alt="Slack Logo">
+                    <img src="https://logo.clearbit.com/spotify.com" alt="Spotify Logo">
+                </div>
+            </div>
+        </section>
+        
+        <!-- FAQ Section -->
+        <section id="faq" class="animated-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Have questions? We've got answers.</p>
+                </div>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">How do I create an account?</div>
+                        <div class="faq-answer"><p>Click the 'Register' button in the top navigation bar. Fill in your email and create a password to get started. It's free and takes less than a minute!</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Is JobFinder free for job seekers?</div>
+                        <div class="faq-answer"><p>Yes, JobFinder is completely free for job seekers. You can search, apply for jobs, and create your profile at no cost.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">How can I upload my resume?</div>
+                        <div class="faq-answer"><p>Once you are logged in, you can access your profile dashboard where you'll find an option to upload your resume. We recommend a PDF or DOCX format.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">I'm an employer. How can I post a job?</div>
+                        <div class="faq-answer"><p>We're glad you're interested! Please click the 'Post a Job' button in the call-to-action section or contact our sales team through the 'For Employers' link in the footer to get started.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- About Us Section -->
+        <section id="about-us" class="placeholder-section bg-light animated-section">
+             <div class="container">
+                <div class="section-title">
+                    <h2>About JobFinder</h2>
+                </div>
+                <div class="about-us-content">
+                    <div class="about-us-text">
+                        <h3>Connecting Talent with Opportunity</h3>
+                        <p>Our mission is to bridge the gap between talented professionals and the best career opportunities available. We believe that finding a fulfilling job can be a life-changing experience, and we are dedicated to making that process as simple and efficient as possible.</p>
+                        <p>Founded in 2024, JobFinder has quickly become a trusted platform for both job seekers and employers. We leverage cutting-edge technology to personalize your job search and connect you with roles that match your skills and aspirations.</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Thousands of verified job listings.</li>
+                            <li><i class="fas fa-check-circle"></i> Personalized job recommendations.</li>
+                            <li><i class="fas fa-check-circle"></i> Easy one-click application process.</li>
+                        </ul>
+                    </div>
+                    <div class="about-us-image">
+                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Office collaboration">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Newsletter Section -->
+        <section class="newsletter-section animated-section">
+            <div class="container">
+                <div class="newsletter-box">
+                    <h2>Get New Jobs Delivered to Your Inbox</h2>
+                    <p>Subscribe to our newsletter and never miss a new opportunity.</p>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <input type="email" id="newsletter-email" placeholder="Enter your email address" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section id="register-cta" class="cta-section">
+            <div class="container"><h2>Are You Looking for a Job or Hiring?</h2><p>Register today to start your journey. We connect talented job seekers with the best employers.</p><div class="cta-buttons"><a class="btn-cta" id="upload-resume-cta">Upload Your Resume</a><a class="btn-cta secondary" id="post-job-cta">Post a Job</a></div></div>
+        </section>
+    </main>
+
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><h4>JobFinder</h4><p>The fastest-growing job portal, connecting talent with premier opportunities worldwide.</p></div>
+                <div class="footer-col"><h4>For Job Seekers</h4><ul><li><a href="#featured-jobs">Find Jobs</a></li><li><a href="#" class="dummy-link">Resume Builder</a></li><li><a href="#blog">Career Advice</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+                <div class="footer-col"><h4>For Employers</h4><ul><li><a href="#" id="footer-post-job-link">Post a Job</a></li><li><a href="#" class="dummy-link">Search Resumes</a></li><li><a href="#" class="dummy-link">Pricing</a></li><li><a href="#" id="employer-login-link">Employer Login</a></li></ul></div>
+                 <div class="footer-col"><h4>Legal</h4><ul><li><a href="#" id="privacy-policy-link">Privacy Policy</a></li><li><a href="#" id="terms-service-link">Terms of Service</a></li><li><a href="#contact">Contact Us</a></li></ul></div>
+            </div>
+             <div class="footer-col"><h4>Follow Us</h4><div class="social-links"><a href="https://otieu.com/4/9957787" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="https://otieu.com/4/9957785" target="_blank"><i class="fab fa-twitter"></i></a><a href="https://otieu.com/4/9957783" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://otieu.com/4/9949142" target="_blank"><i class="fab fa-linkedin-in"></i></a></div></div>
+            <div class="footer-bottom"><p>&copy; 2024 JobFinder. All Rights Reserved. Designed by You.</p></div>
+        </div>
+    </footer>
+    
+    <a href="#" id="back-to-top-btn"><i class="fas fa-arrow-up"></i></a>
+    <input type="file" id="resume-upload-input" style="display: none;" accept=".pdf,.doc,.docx">
+
+    <!-- Auth Modal -->
+    <div class="modal-overlay" id="auth-modal-overlay">
+        <div class="modal-container">
+            <span class="close-btn">&times;</span>
+
+            <!-- Login View -->
+            <div id="login-view" class="auth-view active">
+                <div class="modal-header"><h2>Login</h2></div>
+                <div class="modal-body">
+                    <form id="login-form">
+                        <div class="form-group"><i class="fa fa-envelope"></i><input type="email" id="login-email" placeholder="Email" required><div class="error-message" id="login-email-error"></div></div>
+                        <div class="form-group"><i class="fa fa-lock"></i><input type="password" id="login-password" placeholder="Password" required><i class="fa fa-eye password-toggle" id="login-pw-toggle"></i><div class="error-message" id="login-password-error"></div></div>
+                        <div class="form-options"><span></span><a class="form-link" id="forgot-password-link">Forgot Password?</a></div>
+                        <button type="submit" class="submit-btn" id="login-submit-btn"><span class="btn-text">Login</span><div class="loader"></div></button>
+                    </form>
+                    <p style="text-align: center; margin-top: 20px; font-size: 0.9rem;">Don't have an account? <a class="form-link" id="switch-to-register">Register here</a></p>
+                </div>
+            </div>
+
+            <!-- Register View -->
+            <div id="register-view" class="auth-view">
+                <div class="modal-header"><h2>Create Account</h2></div>
+                <div class="modal-body">
+                    <form id="register-form">
+                        <div class="form-group"><i class="fa fa-envelope"></i><input type="email" id="register-email" placeholder="Email" required><div class="error-message" id="register-email-error"></div></div>
+                        <div class="form-group"><i class="fa fa-lock"></i><input type="password" id="register-password" placeholder="Password" required><i class="fa fa-eye password-toggle" id="register-pw-toggle"></i><div class="error-message" id="register-password-error"></div></div>
+                        <button type="submit" class="submit-btn" id="register-submit-btn"><span class="btn-text">Create Account</span><div class="loader"></div></button>
+                    </form>
+                    <p style="text-align: center; margin-top: 20px; font-size: 0.9rem;">Already have an account? <a class="form-link" id="switch-to-login">Login here</a></p>
+                </div>
+            </div>
+            
+            <!-- Forgot Password View -->
+            <div id="forgot-password-view" class="auth-view">
+                <div class="modal-header"><h2>Reset Password</h2></div>
+                <div class="modal-body">
+                    <p style="font-size: 0.9rem; color: var(--secondary-color); text-align: center; margin-bottom: 20px;">Enter your email and we'll send you a link to reset your password.</p>
+                    <form id="forgot-password-form">
+                        <div class="form-group"><i class="fa fa-envelope"></i><input type="email" id="forgot-email" placeholder="Email" required><div class="error-message" id="forgot-email-error"></div></div>
+                        <button type="submit" class="submit-btn" id="forgot-submit-btn"><span class="btn-text">Send Reset Link</span><div class="loader"></div></button>
+                    </form>
+                     <div id="auth-message-global"></div>
+                    <p style="text-align: center; margin-top: 20px;"><a class="form-link" id="back-to-login-link">Back to Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Job Details Modal -->
+    <div class="modal-overlay content-modal" id="job-details-modal">
+        <div class="modal-container">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                <img id="job-modal-logo" src="" alt="Company Logo">
+                <div>
+                    <h3 id="job-modal-title"></h3>
+                    <span id="job-modal-company" class="company-name"></span>
+                </div>
+            </div>
+            <div class="modal-body" id="job-modal-description"></div>
+            <div class="modal-footer">
+                <a id="job-modal-apply-link" href="#" target="_blank" class="btn-external-apply">Find & Apply</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Blog Post Modal -->
+    <div class="modal-overlay content-modal blog-modal-content" id="blog-post-modal">
+        <div class="modal-container">
+            <span class="close-btn">&times;</span>
+            <img id="blog-modal-image" src="" alt="Blog Image" class="blog-modal-image">
+            <div class="modal-header">
+                 <h2 id="blog-modal-title"></h2>
+            </div>
+            <div class="modal-body" id="blog-modal-content"></div>
+        </div>
+    </div>
+    
+    <!-- Generic Content Modal -->
+    <div class="modal-overlay content-modal" id="generic-modal">
+        <div class="modal-container">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header">
+                 <h2 id="generic-modal-title"></h2>
+            </div>
+            <div class="modal-body" id="generic-modal-content"></div>
+        </div>
+    </div>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+
+    <script>
+        // --- Your Firebase Configuration ---
+        const firebaseConfig = {
+            apiKey: "AIzaSyA5Ix3dIMTiDFDZx7zk-Ynm9Pq2zJguAd0",
+            authDomain: "newloggerproject.firebaseapp.com",
+            databaseURL: "https://newloggerproject-default-rtdb.firebaseio.com",
+            projectId: "newloggerproject",
+            storageBucket: "newloggerproject.appspot.com",
+            messagingSenderId: "271590179765",
+            appId: "1:271590179765:web:183b7163646aeec7d48ffc",
+            measurementId: "G-6W5FF4DEZF"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // --- Generic Modal Logic ---
+        const openModalById = (modalId) => {
+            const modal = document.getElementById(modalId);
+            if(modal) {
+                modal.style.display = 'flex';
+                setTimeout(() => modal.classList.add('show'), 10);
+            }
+        };
+
+        const closeModalAny = () => {
+            const openModals = document.querySelectorAll('.modal-overlay.show');
+            openModals.forEach(modal => {
+                modal.classList.remove('show');
+                setTimeout(() => modal.style.display = 'none', 300);
+            });
+        };
+        
+        document.querySelectorAll('.modal-overlay .close-btn').forEach(btn => btn.addEventListener('click', closeModalAny));
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+             overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeModalAny();
+            });
+        });
+
+        // --- Auth Modal & UI Logic ---
+        const authModal = document.getElementById('auth-modal-overlay');
+        const allAuthViews = authModal.querySelectorAll('.auth-view');
+        const allAuthInputs = authModal.querySelectorAll('input');
+        const allAuthErrorMessages = authModal.querySelectorAll('.error-message');
+
+        const showAuthView = (viewId) => {
+            allAuthViews.forEach(view => view.classList.remove('active'));
+            document.getElementById(viewId).classList.add('active');
+        };
+
+        document.getElementById('open-login-modal').addEventListener('click', () => {
+            openModalById('auth-modal-overlay');
+            showAuthView('login-view');
+        });
+        document.getElementById('open-register-modal').addEventListener('click', () => {
+            openModalById('auth-modal-overlay');
+            showAuthView('register-view');
+        });
+
+        const showLoader = (btn) => btn.classList.add('loading');
+        const hideLoader = (btn) => btn.classList.remove('loading');
+
+        const displayError = (elementId, message) => {
+            const el = document.getElementById(elementId);
+            el.textContent = message;
+            el.style.display = 'block';
+        };
+
+        const clearAllErrors = () => {
+            allAuthErrorMessages.forEach(el => {
+                el.textContent = '';
+                el.style.display = 'none';
+            });
+            document.getElementById('auth-message-global').textContent = '';
+            document.getElementById('auth-message-global').className = '';
+        };
+
+        allAuthInputs.forEach(input => input.addEventListener('input', () => {
+            const errorEl = document.getElementById(`${input.id}-error`);
+            if (errorEl && errorEl.style.display === 'block') {
+                errorEl.style.display = 'none';
+            }
+        }));
+
+        document.getElementById('switch-to-register').addEventListener('click', () => showAuthView('register-view'));
+        document.getElementById('switch-to-login').addEventListener('click', () => showAuthView('login-view'));
+        document.getElementById('forgot-password-link').addEventListener('click', () => showAuthView('forgot-password-view'));
+        document.getElementById('back-to-login-link').addEventListener('click', () => showAuthView('login-view'));
+
+        const togglePasswordVisibility = (inputId, toggleId) => {
+            const input = document.getElementById(inputId);
+            const toggle = document.getElementById(toggleId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                toggle.classList.remove('fa-eye');
+                toggle.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                toggle.classList.remove('fa-eye-slash');
+                toggle.classList.add('fa-eye');
+            }
+        };
+
+        document.getElementById('login-pw-toggle').addEventListener('click', () => togglePasswordVisibility('login-password', 'login-pw-toggle'));
+        document.getElementById('register-pw-toggle').addEventListener('click', () => togglePasswordVisibility('register-password', 'register-pw-toggle'));
+
+
+        // --- Firebase Auth Logic ---
+        document.getElementById('register-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            clearAllErrors();
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const btn = document.getElementById('register-submit-btn');
+            showLoader(btn);
+
+            auth.createUserWithEmailAndPassword(email, password)
+                .then(userCredential => closeModalAny())
+                .catch(error => {
+                    if (error.code === 'auth/email-already-in-use') displayError('register-email-error', 'This email is already in use.');
+                    else if (error.code === 'auth/invalid-email') displayError('register-email-error', 'Please enter a valid email address.');
+                    else if (error.code === 'auth/weak-password') displayError('register-password-error', 'Password should be at least 6 characters.');
+                    else displayError('register-email-error', 'An unexpected error occurred. Please try again.');
+                }).finally(() => hideLoader(btn));
+        });
+
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            clearAllErrors();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const btn = document.getElementById('login-submit-btn');
+            showLoader(btn);
+
+            auth.signInWithEmailAndPassword(email, password)
+                .then(userCredential => closeModalAny())
+                .catch(error => {
+                    if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') displayError('login-email-error', 'Invalid email or password.');
+                    else if (error.code === 'auth/invalid-email') displayError('login-email-error', 'Please enter a valid email address.');
+                    else if (error.code === 'auth/too-many-requests') displayError('login-email-error', 'Access temporarily disabled due to many failed login attempts.');
+                    else displayError('login-email-error', 'An unexpected error occurred. Please try again.');
+                }).finally(() => hideLoader(btn));
+        });
+        
+        document.getElementById('forgot-password-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            clearAllErrors();
+            const email = document.getElementById('forgot-email').value;
+            const btn = document.getElementById('forgot-submit-btn');
+            const globalMsg = document.getElementById('auth-message-global');
+            showLoader(btn);
+            
+            auth.sendPasswordResetEmail(email)
+                .then(() => {
+                    globalMsg.className = 'success';
+                    globalMsg.textContent = 'Password reset link sent! Please check your email.';
+                })
+                .catch(error => {
+                    if (error.code === 'auth/user-not-found') displayError('forgot-email-error', 'No account found with this email.');
+                    else if (error.code === 'auth/invalid-email') displayError('forgot-email-error', 'Please enter a valid email address.');
+                    else displayError('forgot-email-error', 'An unexpected error occurred. Please try again.');
+                }).finally(() => hideLoader(btn));
+        });
+
+        document.getElementById('logout-link').addEventListener('click', () => auth.signOut());
+
+        auth.onAuthStateChanged(user => {
+            const loginLink = document.getElementById('login-link');
+            const registerLink = document.getElementById('register-link');
+            const userInfo = document.getElementById('user-info');
+            const logoutLink = document.getElementById('logout-link');
+
+            if (user) {
+                loginLink.style.display = 'none';
+                registerLink.style.display = 'none';
+                userInfo.textContent = user.email;
+                userInfo.style.display = 'block';
+                logoutLink.style.display = 'block';
+            } else {
+                loginLink.style.display = 'block';
+                registerLink.style.display = 'block';
+                userInfo.style.display = 'none';
+                logoutLink.style.display = 'none';
+            }
+        });
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Menu, Navbar Scroll etc. ---
+            const hamburger = document.querySelector(".hamburger");
+            const navLinks = document.querySelector(".nav-links");
+            const navLinkItems = document.querySelectorAll(".nav-links li a");
+            hamburger.addEventListener("click", () => { hamburger.classList.toggle("active"); navLinks.classList.toggle("active"); });
+            navLinkItems.forEach(link => { link.addEventListener("click", () => { if (navLinks.classList.contains("active")) { hamburger.classList.remove("active"); navLinks.classList.remove("active"); } }); });
+            let lastScrollTop = 0;
+            const navbar = document.querySelector('.navbar');
+            const backToTopBtn = document.getElementById('back-to-top-btn');
+
+            window.addEventListener('scroll', function() {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop && scrollTop > navbar.offsetHeight) { navbar.style.top = '-80px'; } else { navbar.style.top = '0'; }
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+
+                if (scrollTop > 300) backToTopBtn.classList.add('show');
+                else backToTopBtn.classList.remove('show');
+            }, false);
+
+            // --- Functional Logic for Search, Categories, and CTAs ---
+            const searchForm = document.getElementById('search-form');
+            const keywordInput = document.getElementById('keyword-input');
+            const jobTypeFilter = document.getElementById('job-type-filter');
+            const locationFilter = document.getElementById('location-filter');
+            const jobGrid = document.getElementById('job-grid');
+            const allJobCards = Array.from(jobGrid.getElementsByClassName('job-card'));
+            const noJobsMessage = document.getElementById('no-jobs-message');
+
+            const filterJobs = () => {
+                const keyword = keywordInput.value.trim().toLowerCase();
+                const jobType = jobTypeFilter.value;
+                const location = locationFilter.value;
+                let visibleJobs = 0;
+
+                allJobCards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const company = card.querySelector('.company-name').textContent.toLowerCase();
+                    const cardLocationText = card.querySelector('.job-details span:first-child').textContent.toLowerCase();
+                    const category = card.dataset.category ? card.dataset.category.toLowerCase() : '';
+                    const cardJobType = card.dataset.jobType || '';
+                    const cardLocation = card.dataset.location || '';
+                    
+                    const keywordMatch = keyword === '' || title.includes(keyword) || company.includes(keyword) || category.includes(keyword) || cardLocationText.includes(keyword);
+                    const jobTypeMatch = jobType === '' || cardJobType === jobType;
+                    const locationMatch = location === '' || cardLocation === location;
+
+                    if (keywordMatch && jobTypeMatch && locationMatch) {
+                        card.style.display = 'flex';
+                        visibleJobs++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                noJobsMessage.style.display = visibleJobs === 0 ? 'block' : 'none';
+            };
+            
+            searchForm.addEventListener('submit', (e) => { e.preventDefault(); filterJobs(); });
+            keywordInput.addEventListener('input', filterJobs);
+            jobTypeFilter.addEventListener('change', filterJobs);
+            locationFilter.addEventListener('change', filterJobs);
+
+            document.querySelectorAll('.category-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    keywordInput.value = card.dataset.category;
+                    filterJobs();
+                    document.getElementById('featured-jobs').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            const uploadResumeBtn = document.getElementById('upload-resume-cta');
+            const postJobBtn = document.getElementById('post-job-cta');
+            const resumeInput = document.getElementById('resume-upload-input');
+
+            const showComingSoonModal = (featureName = 'This feature') => {
+                document.getElementById('generic-modal-title').textContent = 'Feature Coming Soon';
+                document.getElementById('generic-modal-content').innerHTML = `<p>${featureName} is currently under development and will be available soon. Thank you for your patience!</p>`;
+                openModalById('generic-modal');
+            };
+
+            uploadResumeBtn.addEventListener('click', () => {
+                if (auth.currentUser) resumeInput.click();
+                else {
+                     openModalById('auth-modal-overlay');
+                     showAuthView('login-view');
+                }
+            });
+            
+            resumeInput.addEventListener('change', () => {
+                if (resumeInput.files.length > 0) alert(`Resume "${resumeInput.files[0].name}" uploaded successfully!`);
+            });
+            
+            postJobBtn.addEventListener('click', () => showComingSoonModal('The employer portal for posting jobs'));
+            document.getElementById('footer-post-job-link').addEventListener('click', (e) => {
+                e.preventDefault();
+                showComingSoonModal('The employer portal for posting jobs');
+            });
+
+            document.querySelectorAll('.dummy-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showComingSoonModal(`The "${e.target.textContent}" feature`);
+                });
+            });
+
+            document.getElementById('employer-login-link').addEventListener('click', (e) => {
+                e.preventDefault();
+                openModalById('auth-modal-overlay');
+                showAuthView('login-view');
+            });
+            
+            // --- FAQ Accordion ---
+            document.querySelectorAll('.faq-question').forEach(item => {
+                item.addEventListener('click', () => {
+                    const activeItem = document.querySelector('.faq-item.active');
+                    const clickedItem = item.parentElement;
+                    if (activeItem && activeItem !== clickedItem) activeItem.classList.remove('active');
+                    clickedItem.classList.toggle('active');
+                });
+            });
+            
+            // --- Newsletter Form ---
+            document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('newsletter-email').value;
+                alert(`Thank you for subscribing with ${email}!`);
+                e.target.reset();
+            });
+
+            // --- Scroll Animations ---
+            const animatedSections = document.querySelectorAll('.animated-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            animatedSections.forEach(section => observer.observe(section));
+
+            // --- Job Details Modal Logic ---
+            document.querySelectorAll('.btn-apply').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const card = e.target.closest('.job-card');
+                    const jobTitle = card.querySelector('h3').textContent.trim();
+                    const companyName = card.querySelector('.company-name').textContent.trim();
+
+                    // Dynamically create a search URL
+                    const searchQuery = `${jobTitle} at ${companyName}`;
+                    const googleJobsUrl = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}&ibp=htl;jobs`;
+                    
+                    document.getElementById('job-modal-logo').src = card.querySelector('.job-card-header img').src;
+                    document.getElementById('job-modal-title').textContent = jobTitle;
+                    document.getElementById('job-modal-company').textContent = companyName;
+                    document.getElementById('job-modal-description').innerHTML = card.dataset.description;
+                    document.getElementById('job-modal-apply-link').href = googleJobsUrl;
+                    openModalById('job-details-modal');
+                });
+            });
+
+            // --- Blog Post Modal Logic ---
+            document.querySelectorAll('.read-more-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const card = e.target.closest('.blog-card');
+                    document.getElementById('blog-modal-image').src = card.dataset.image;
+                    document.getElementById('blog-modal-title').textContent = card.dataset.title;
+                    document.getElementById('blog-modal-content').innerHTML = card.dataset.content;
+                    openModalById('blog-post-modal');
+                });
+            });
+            
+            // --- Footer Legal Links Modal Logic ---
+            const privacyPolicyContent = "<h4>1. Information We Collect</h4><p>We collect information you provide directly to us, such as when you create an account, upload a resume, or apply for a job. This may include your name, email address, phone number, and professional history.</p><h4>2. How We Use Your Information</h4><p>We use the information we collect to operate, maintain, and provide you with the features and functionality of the service, as well as to communicate directly with you, such as to send you email messages and push notifications.</p><h4>3. Sharing of Your Information</h4><p>We may share your information with third-party business partners for the purpose of providing the service to you. Those business partners will be given limited access to your information as is reasonably necessary to deliver the service.</p>";
+            const termsServiceContent = "<h4>1. Acceptance of Terms</h4><p>By accessing and using JobFinder, you accept and agree to be bound by the terms and provision of this agreement. In addition, when using these particular services, you shall be subject to any posted guidelines or rules applicable to such services.</p><h4>2. Your Responsibilities</h4><p>You are responsible for your own communications, including the upload, transmission and posting of information, and are responsible for the consequences of their posting on or through the service. You agree you will not post material that is copyrighted, unless you are the copyright owner.</p><h4>3. Disclaimer</h4><p>The service is provided 'as is'. We make no warranties, expressed or implied, and hereby disclaim and negate all other warranties.</p>";
+
+            document.getElementById('privacy-policy-link').addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('generic-modal-title').textContent = 'Privacy Policy';
+                document.getElementById('generic-modal-content').innerHTML = privacyPolicyContent;
+                openModalById('generic-modal');
+            });
+
+            document.getElementById('terms-service-link').addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('generic-modal-title').textContent = 'Terms of Service';
+                document.getElementById('generic-modal-content').innerHTML = termsServiceContent;
+                openModalById('generic-modal');
+            });
+        });
+    </script>
+
+</body>
+</html>
